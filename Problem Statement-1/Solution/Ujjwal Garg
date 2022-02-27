@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+string playerA(int arr[], int n, int A, int B, int k)
+{
+    int countA = 0;
+    int countB = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] % A == 0 && arr[i] % B != 0)
+        {
+            countA++;
+        }
+        else if (arr[i] % B == 0 && arr[i] % A != 0)
+        {
+            countB++;
+        }
+    }
+    if (countA + countB <= k)
+    {
+        return "Win";
+    }
+    else
+    {
+        return "Lose";
+    }
+}
+int main()
+{
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int n, A, B, k;
+        cin >> n >> A >> B >> k;
+        int arr[n];
+        for (int i = 0; i < n; i++)
+        {
+            arr[i]=i+1;
+        }
+        cout << playerA(arr, n, A, B, k) << endl;
+    }
+    return 0;
+}
